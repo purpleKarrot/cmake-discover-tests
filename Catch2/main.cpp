@@ -1,19 +1,25 @@
 // SPDX-FileCopyrightText: 2025 Daniel Pfeifer <daniel@pfeifer-mail.de>
 // SPDX-License-Identifier: ISC
 
-#include <catch2/catch_test_macros.hpp>
+#include <catch2/catch_all.hpp>
 
-TEST_CASE("Math - Addition", "[math]")
+TEST_CASE("Math")
 {
-    REQUIRE(1 + 1 == 2);
+    SECTION("Addition")
+    {
+        CHECK(1 + 1 == 2);
+    }
+
+    SECTION("Subtraction")
+    {
+        CHECK(2 - 1 == 1);
+    }
 }
 
-TEST_CASE("Math - Subtraction", "[math]")
+TEST_CASE("String")
 {
-    REQUIRE(2 - 1 == 1);
-}
-
-TEST_CASE("String - Compare", "[string]")
-{
-    REQUIRE(std::string("hello") == "hello");
+    SECTION("Compare")
+    {
+        CHECK(std::string("hello") == "hello");
+    }
 }

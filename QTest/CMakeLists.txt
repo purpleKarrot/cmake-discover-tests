@@ -15,16 +15,16 @@ qt_add_executable(qt_test_string_runner string.cpp)
 target_link_libraries(qt_test_string_runner PRIVATE Qt::Test)
 set_property(TARGET qt_test_string_runner PROPERTY AUTOMOC ON)
 
-discover_tests(qt_test_math_runner
-  DISCOVERY_ARGS        [[-functions]]
-  DISCOVERY_MATCH       [[([^(]*)\(\)]]
-  TEST_NAME_REPLACEMENT [[qt.Math.\1]]
-  TEST_ARGS_REPLACEMENT [[\1]]
+discover_tests(COMMAND qt_test_math_runner
+  DISCOVERY_ARGS -functions
+  DISCOVERY_MATCH [[([^(]*)\(\)]]
+  TEST_NAME [[qt.Math.\1]]
+  TEST_ARGS [[\1]]
 )
 
-discover_tests(qt_test_string_runner
-  DISCOVERY_ARGS        [[-functions]]
-  DISCOVERY_MATCH       [[([^(]*)\(\)]]
-  TEST_NAME_REPLACEMENT [[qt.String.\1]]
-  TEST_ARGS_REPLACEMENT [[\1]]
+discover_tests(COMMAND qt_test_string_runner
+  DISCOVERY_ARGS -functions
+  DISCOVERY_MATCH [[([^(]*)\(\)]]
+  TEST_NAME [[qt.String.\1]]
+  TEST_ARGS [[\1]]
 )

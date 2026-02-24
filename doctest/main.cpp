@@ -21,6 +21,6 @@ TEST_SUITE("String")
 {
     TEST_CASE("Compare")
     {
-        CHECK(std::string("hello") == std::string("hello"));
+        CHECK(std::string("hello") == "hello");
     }
 }

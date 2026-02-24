@@ -3,29 +3,12 @@
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
-# discover_tests(Python3::Interpreter -m pytest
-#   DISCOVERY_ARGS        --collect-only --quiet
-#   DISCOVERY_MATCH       [[test_([^:]+)\.py(::Test([^:]+))?::test_(.+)]]
-#   TEST_NAME_REPLACEMENT [[pytest.\3.\4]]
-#   TEST_ARGS_REPLACEMENT [[\0]]
-#   PROPERTIES
-#     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-# )
-
-discover_tests(Python3::Interpreter -m pytest
-  DISCOVERY_ARGS        --collect-only --quiet
-  DISCOVERY_MATCH       [[(test_[^:]+\.py)::Test([^:]+)::test_(.+)]]
-  TEST_NAME_REPLACEMENT [[pytest.\2.\3]]
-  TEST_ARGS_REPLACEMENT [[\0]]
+discover_tests(COMMAND Python3::Interpreter -B -m pytest -p no:cacheprovider
+  DISCOVERY_ARGS --collect-only --quiet
+  DISCOVERY_MATCH [[test_([^:]+)\.py(::Test([^:]+))?::test_(.+)]]
+  TEST_NAME [[pytest.\3.\4]]
+  TEST_ARGS [[\0]]
   PROPERTIES
-    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    LABELS "pytest;\\3"
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
-
-# discover_tests(Python3::Interpreter -m pytest
-#   DISCOVERY_ARGS        --collect-only --quiet
-#   DISCOVERY_MATCH       [[(test_[^:]+\.py)::test_(.+)]]
-#   TEST_NAME_REPLACEMENT [[pytest.\2]]
-#   TEST_ARGS_REPLACEMENT [[\0]]
-#   PROPERTIES
-#     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-# )

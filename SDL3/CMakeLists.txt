@@ -9,9 +9,9 @@ target_link_libraries(sdl3_test_runner
   SDL3::SDL3_test
 )
 
-discover_tests(sdl3_test_runner
-  DISCOVERY_ARGS        --list-tests
-  DISCOVERY_MATCH       [[.+]]
-  TEST_NAME_REPLACEMENT [[sdl3.\0]]
-  TEST_ARGS_REPLACEMENT [[--filter \0]]
+discover_tests(COMMAND sdl3_test_runner
+  DISCOVERY_ARGS --list-tests
+  DISCOVERY_MATCH ".+"
+  TEST_NAME "sdl3.\\0"
+  TEST_ARGS --filter "\\0"
 )
