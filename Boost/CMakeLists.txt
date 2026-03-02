@@ -18,7 +18,7 @@ create_test_sourcelist(SRC light.cpp math.cpp string.cpp)
 add_executable(boost_test_runner_light ${SRC})
 target_link_libraries(boost_test_runner_light PRIVATE Boost::headers)
 
-discover_tests(COMMAND cmake_test_runner_light
+discover_tests(COMMAND boost_test_runner_light
   DISCOVERY_ARGS -N
   DISCOVERY_MATCH ".+"
   TEST_NAME "Boost.Light.\\0"
