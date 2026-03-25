@@ -10,7 +10,7 @@ target_link_libraries(boost_test_runner PRIVATE Boost::unit_test_framework)
 discover_tests(COMMAND boost_test_runner
   DISCOVERY_ARGS --list_content
   DISCOVERY_MATCH ".+"
-  TEST_NAME "boost.\\0"
+  TEST_NAME "Boost.\\0"
   TEST_ARGS "--run_test=\\0"
 )
 
